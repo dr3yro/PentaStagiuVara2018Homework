@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetirementCalculator", "RetirementCalculator\RetirementCalculator.csproj", "{D567CFCD-CF35-42F3-A6C9-0E9C5FA12B67}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StringFunctionalities", "StringFunctionalities\StringFunctionalities.csproj", "{51B8D708-0BA0-40FC-805F-066C06F731B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{D567CFCD-CF35-42F3-A6C9-0E9C5FA12B67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D567CFCD-CF35-42F3-A6C9-0E9C5FA12B67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D567CFCD-CF35-42F3-A6C9-0E9C5FA12B67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51B8D708-0BA0-40FC-805F-066C06F731B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51B8D708-0BA0-40FC-805F-066C06F731B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51B8D708-0BA0-40FC-805F-066C06F731B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51B8D708-0BA0-40FC-805F-066C06F731B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
