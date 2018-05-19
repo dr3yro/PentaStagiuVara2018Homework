@@ -45,6 +45,11 @@ namespace BlogClass
             this.EMail = eMail;
             this.BrithDate = birthDate;
         }
+
+        public string GetName()
+        {
+            return this.FirstName;
+        }
     }
 
     public class User : Person
