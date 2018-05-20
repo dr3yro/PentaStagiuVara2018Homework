@@ -45,18 +45,20 @@ namespace BlogClass
             this.EMail = eMail;
             this.BrithDate = birthDate;
         }
-
-        public string GetName()
-        {
-            return this.FirstName;
-        }
     }
 
     public class User : Person
     {
+        private string UserId;
+
         public User(string firstName,string lastName,string eMail,DateTime birthDate) : base (firstName, lastName, eMail, birthDate)
         {
+            this.UserId = firstName + lastName;
+        }
 
+        public string GetUserId()
+        {
+            return this.UserId;
         }
     }
 

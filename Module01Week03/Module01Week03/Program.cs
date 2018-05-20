@@ -35,8 +35,8 @@ namespace Module01Week03
 
                     string accountName = firstName + lastName;
 
-                    Person user = new Person(firstName, lastName, eMail, birthDate);
-                    Console.WriteLine($"Hello {user.GetName()}! Your account has been created.");
+                    User user = new User(firstName, lastName, eMail, birthDate);
+                    Console.WriteLine($"Hello {user.GetUserId()}! Your account has been created.");
                     Console.ReadLine();
                     break;
                 default:
