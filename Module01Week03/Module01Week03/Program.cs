@@ -33,8 +33,6 @@ namespace Module01Week03
                     Console.Write("Please enter your Birth Date: ");
                     DateTime birthDate = DateTime.Parse(Console.ReadLine());
 
-                    string accountName = firstName + lastName;
-
                     User user = new User(firstName, lastName, eMail, birthDate);
                     Console.WriteLine($"Hello {user.GetUserId()}! Your account has been created.");
                     Console.ReadLine();
