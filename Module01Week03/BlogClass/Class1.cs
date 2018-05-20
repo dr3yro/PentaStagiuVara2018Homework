@@ -13,6 +13,8 @@ using BlogClass;
         - CreateAccount()
 
     User:Person
+        - UserId
+        - Password
 
        Person
         - EMail
@@ -50,15 +52,41 @@ namespace BlogClass
     public class User : Person
     {
         private string UserId;
+        private string Password;
 
-        public User(string firstName,string lastName,string eMail,DateTime birthDate) : base (firstName, lastName, eMail, birthDate)
+        public User(string firstName, string lastName, string eMail, DateTime birthDate, string accountId, string password) : base (firstName, lastName, eMail, birthDate)
         {
-            this.UserId = firstName + lastName;
+            this.UserId = accountId;
+            this.Password = password;
         }
 
         public string GetUserId()
         {
             return this.UserId;
+        }
+
+        public string GetPassword()
+        {
+            return this.Password;
+        }
+
+        public bool CheckCredentials(string providedAccountName, string providedAccountPassword)
+        {
+            if (providedAccountName == this.UserId)
+            {
+                if (providedAccountPassword == this.Password)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 

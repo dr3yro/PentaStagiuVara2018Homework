@@ -11,10 +11,12 @@ namespace Module01Week03
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome! Please chhose one of the below options:");
+            Console.WriteLine("Welcome! Please choose one of the below options:");
             
             options:
             Console.WriteLine("1. Create user");
+            Console.WriteLine("2. Log In");
+            Console.WriteLine("5. Exit");
             Console.WriteLine();
             Console.Write("Please enter your option: ");
             int chosenOption = int.Parse(Console.ReadLine());
@@ -33,15 +35,42 @@ namespace Module01Week03
                     Console.Write("Please enter your Birth Date: ");
                     DateTime birthDate = DateTime.Parse(Console.ReadLine());
 
-                    User user = new User(firstName, lastName, eMail, birthDate);
-                    Console.WriteLine($"Hello {user.GetUserId()}! Your account has been created.");
-                    Console.ReadLine();
+                    Console.Write("Please enter your desired account name: ");
+                    string accountId = Console.ReadLine();
+
+                    Console.Write("Please enter your desired account password: ");
+                    string password = Console.ReadLine();
+
+                    User user = new User(firstName, lastName, eMail, birthDate, accountId, password);
+                    Console.WriteLine($"The account {user.GetUserId()} has been created successfuly.");
+                    Console.WriteLine();
+                    Console.WriteLine("Please choose one of the below options:");
+
+                    goto options;
+
+                case 2:
+                    Console.WriteLine();
+                    Console.Write("Please provide your account name: ");
+                    string providedAccountName = Console.ReadLine();
+
+                    Console.Write("Please ptovide the account password: ");
+                    string providedAccountPassword = Console.ReadLine();
                     break;
+
+                case 5:
+                    break;
+
                 default:
                     Console.WriteLine();
                     Console.WriteLine("Wrong option. Please choose one of the below options:");
                     goto options;
             }
+        }
+
+        public void SetAccountInfo(string providedAccountName, string providedAccountPassword)
+        {
+            string accountName = providedAccountName;
+            string accountPassword = providedAccountPassword;
         }
     }
 }
