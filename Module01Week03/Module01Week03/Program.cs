@@ -11,66 +11,38 @@ namespace Module01Week03
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome! Please choose one of the below options:");
-            
-            options:
-            Console.WriteLine("1. Create user");
-            Console.WriteLine("2. Log In");
-            Console.WriteLine("5. Exit");
-            Console.WriteLine();
-            Console.Write("Please enter your option: ");
-            int chosenOption = int.Parse(Console.ReadLine());
+            while (true)
+            {
+                Console.WriteLine("1. Create a new Account");
+                Console.WriteLine("2. Log in");
+                Console.WriteLine("3. Log out");
+                Console.WriteLine("4. Post a message");
+                Console.WriteLine("5. Admin - display users");
+                Console.WriteLine("6. Exit");
 
-            switch(chosenOption){
-                case 1:
-                    Console.Write("Please enter your First Name: ");
-                    string firstName = Console.ReadLine();
+                Console.WriteLine();
+                Console.Write("Please choose one of the above options: ");
+                string userOption = Console.ReadLine();
 
-                    Console.Write("Please enter your Last Name: ");
-                    string lastName = Console.ReadLine();
-
-                    Console.Write("Please enter your E-Mail Address: ");
-                    string eMail = Console.ReadLine();
-
-                    Console.Write("Please enter your Birth Date: ");
-                    DateTime birthDate = DateTime.Parse(Console.ReadLine());
-
-                    Console.Write("Please enter your desired account name: ");
-                    string accountId = Console.ReadLine();
-
-                    Console.Write("Please enter your desired account password: ");
-                    string password = Console.ReadLine();
-
-                    User user = new User(firstName, lastName, eMail, birthDate, accountId, password);
-                    Console.WriteLine($"The account {user.GetUserId()} has been created successfuly.");
-                    Console.WriteLine();
-                    Console.WriteLine("Please choose one of the below options:");
-
-                    goto options;
-
-                case 2:
-                    Console.WriteLine();
-                    Console.Write("Please provide your account name: ");
-                    string providedAccountName = Console.ReadLine();
-
-                    Console.Write("Please ptovide the account password: ");
-                    string providedAccountPassword = Console.ReadLine();
-                    break;
-
-                case 5:
-                    break;
-
-                default:
-                    Console.WriteLine();
-                    Console.WriteLine("Wrong option. Please choose one of the below options:");
-                    goto options;
+                switch (userOption)
+                {
+                    case "1":
+                        Application.createUser();
+                        break;
+                    case "2":
+                        
+                        break;
+                    case "3":
+                        break;
+                    case "4":
+                        break;
+                    case "5":
+                        Application.returnUserList();
+                        break;
+                    case "6":
+                        return;
+                }
             }
-        }
-
-        public void SetAccountInfo(string providedAccountName, string providedAccountPassword)
-        {
-            string accountName = providedAccountName;
-            string accountPassword = providedAccountPassword;
         }
     }
 }

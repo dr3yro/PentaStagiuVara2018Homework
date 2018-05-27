@@ -9,18 +9,18 @@ using BlogClass;
     Application
         - User
         - Board
-        - PostMessage()
-        - CreateAccount()
 
     User:Person
         - UserId
         - Password
+        - PostMessage()
 
        Person
         - EMail
         - FirstName
         - LastName
         - BirthDate
+        - CreateAccount()
 
     Post
         - Message
@@ -33,60 +33,85 @@ using BlogClass;
 */
 namespace BlogClass
 {
+    public class Application
+    {
+       static List<object> userList = new List<object>();
+
+        public static void createUser()
+        {
+            Console.WriteLine();
+            Console.Write("Please enter your first name: ");
+            string firstName = Console.ReadLine();
+            Console.Write("Please enter your last name: ");
+            string lastName = Console.ReadLine();
+            Console.Write("Please enter your E-Mail address: ");
+            string eMail = Console.ReadLine();
+            Console.Write("Please enter your birthdate: ");
+            DateTime birthDate = DateTime.Parse(Console.ReadLine());
+            User test = new User(firstName, lastName, eMail, birthDate);
+            userList.Add(test);
+            Console.WriteLine();
+        }
+
+        public static bool returnUserList()
+        {
+            Console.WriteLine();
+            foreach (object user in userList)
+            {
+                Console.WriteLine(user.ToString());
+            }
+            Console.WriteLine();
+            return true;
+        }
+    }
+
     public class Person
     {
         private string FirstName;
         private string LastName;
         private string EMail;
-        private DateTime BrithDate;
+        private DateTime BirthDate;
 
         public Person(string firstName, string lastName, string eMail, DateTime birthDate)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
             this.EMail = eMail;
-            this.BrithDate = birthDate;
+            this.BirthDate = birthDate;
         }
+
     }
 
     public class User : Person
     {
         private string UserId;
         private string Password;
+        private int loggedIn;
 
-        public User(string firstName, string lastName, string eMail, DateTime birthDate, string accountId, string password) : base (firstName, lastName, eMail, birthDate)
+        public User(string firstName, string lastName, string eMail, DateTime birthDate) : base(firstName, lastName, eMail, birthDate)
         {
-            this.UserId = accountId;
-            this.Password = password;
+            this.UserId = CreateUserId(firstName, lastName);
+            this.Password = RequestPassword();
         }
 
-        public string GetUserId()
+        private string RequestPassword()
         {
-            return this.UserId;
+            Console.Write("Please provide your user Password: ");
+            string userPassword = Console.ReadLine();
+            return userPassword;
         }
 
-        public string GetPassword()
+        private string CreateUserId(string firstName, string lastname)
         {
-            return this.Password;
+            Random randomNumber = new Random();
+            string randomizeAccount = randomNumber.Next(1, 500).ToString();
+            string userId = firstName.Substring(0, 3) + lastname.Substring(0, 3) + randomizeAccount;
+            return userId;
         }
 
-        public bool CheckCredentials(string providedAccountName, string providedAccountPassword)
+        public override string ToString()
         {
-            if (providedAccountName == this.UserId)
-            {
-                if (providedAccountPassword == this.Password)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
+            return $"{this.UserId}";
         }
     }
 
@@ -103,9 +128,5 @@ namespace BlogClass
             this.DateOfPost = dateOfPost;
         }
     }
-
-    public class Board
-    {
-        
-    }
 }
+
