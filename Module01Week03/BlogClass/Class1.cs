@@ -48,8 +48,8 @@ namespace BlogClass
             string eMail = Console.ReadLine();
             Console.Write("Please enter your birthdate: ");
             DateTime birthDate = DateTime.Parse(Console.ReadLine());
-            User test = new User(firstName, lastName, eMail, birthDate);
-            userList.Add(test);
+            User user = new User(firstName, lastName, eMail, birthDate);
+            userList.Add(user);
             Console.WriteLine();
         }
 
@@ -63,6 +63,7 @@ namespace BlogClass
             Console.WriteLine();
             return true;
         }
+
     }
 
     public class Person
