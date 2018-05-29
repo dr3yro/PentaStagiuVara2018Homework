@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using BlogClass;
 
+
 /*
     Application
         - User
@@ -36,6 +37,21 @@ namespace BlogClass
     public class Application
     {
        static List<object> userList = new List<object>();
+       static List<object> userPosts = new List<object>();
+
+        public static string DisplayMenu()
+        {
+            Console.WriteLine("1. Create a new Account");
+            Console.WriteLine("2. Post a message");
+            Console.WriteLine("3. Admin - display users");
+            Console.WriteLine("4. Display Posts");
+            Console.WriteLine("5. Exit");
+
+            Console.WriteLine();
+            Console.Write("Please choose one of the above options: ");
+            string userOption = Console.ReadLine();
+            return userOption;
+        }
 
         public static void createUser()
         {
@@ -53,12 +69,42 @@ namespace BlogClass
             Console.WriteLine();
         }
 
+        public static void createPost()
+        {
+            Console.Write("Please enter your post body: ");
+            string postBody = Console.ReadLine();
+
+            Application.returnUserList();
+            Console.Write("Please enter the number of one of the authors listed above: ");
+            int selectedUser = int.Parse(Console.ReadLine());
+
+            Post post = new Post(postBody,userList.ElementAt(selectedUser-1).ToString(),DateTime.Now);
+            userPosts.Add(post);
+            Console.WriteLine("Post added sucessfully!");
+            Console.WriteLine();
+        }
+
         public static bool returnUserList()
         {
+            int counter = 1;
             Console.WriteLine();
             foreach (object user in userList)
             {
-                Console.WriteLine(user.ToString());
+                 Console.WriteLine(counter + ". " + user.ToString());
+                counter += 1;
+            }
+            Console.WriteLine();
+            return true;
+        }
+
+        public static bool returnPostList()
+        {
+            int counter = 1;
+            Console.WriteLine();
+            foreach (object post in userPosts)
+            {
+                Console.WriteLine(counter + " - " + post.ToString());
+                counter += 1;
             }
             Console.WriteLine();
             return true;
@@ -87,7 +133,6 @@ namespace BlogClass
     {
         private string UserId;
         private string Password;
-        private int loggedIn;
 
         public User(string firstName, string lastName, string eMail, DateTime birthDate) : base(firstName, lastName, eMail, birthDate)
         {
@@ -127,6 +172,11 @@ namespace BlogClass
             this.PostContent = postContent;
             this.Author = author;
             this.DateOfPost = dateOfPost;
+        }
+
+        public override string ToString()
+        {
+            return $"{PostContent} - created by {Author} on {DateOfPost}";
         }
     }
 }

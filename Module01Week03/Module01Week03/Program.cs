@@ -13,16 +13,7 @@ namespace Module01Week03
         {
             while (true)
             {
-                Console.WriteLine("1. Create a new Account");
-                Console.WriteLine("2. Log in");
-                Console.WriteLine("3. Log out");
-                Console.WriteLine("4. Post a message");
-                Console.WriteLine("5. Admin - display users");
-                Console.WriteLine("6. Exit");
-
-                Console.WriteLine();
-                Console.Write("Please choose one of the above options: ");
-                string userOption = Console.ReadLine();
+                string userOption = Application.DisplayMenu();
 
                 switch (userOption)
                 {
@@ -30,16 +21,15 @@ namespace Module01Week03
                         Application.createUser();
                         break;
                     case "2":
-                        
+                        Application.createPost();
                         break;
                     case "3":
-                        break;
-                    case "4":
-                        break;
-                    case "5":
                         Application.returnUserList();
                         break;
-                    case "6":
+                    case "4":
+                        Application.returnPostList();
+                        break;
+                    case "5":
                         return;
                 }
             }
