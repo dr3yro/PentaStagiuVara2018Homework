@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace Module02Week01
 {
-    public class WriteFile : FileManipulator
+    public class AppendFile : FileManipulator
     {
         public override void fileManipulator(List<string> persons)
         {
             List<string> names = persons;
 
-            using (StreamWriter writeFile = new StreamWriter("people.txt"))
+            using (StreamWriter appendFile = File.AppendText("people.txt"))
             {
                 foreach (string name in names)
                 {
-                    writeFile.WriteLine(name);
+                    appendFile.WriteLine(name);
                 }
             }
         }

@@ -42,10 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppendToFile.cs" />
+    <Compile Include="AppendFile.cs" />
+    <Compile Include="FileManipulator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadFile.cs" />
+    <Compile Include="RemoveFromFile.cs" />
     <Compile Include="WriteFile.cs" />
   </ItemGroup>
   <ItemGroup>
