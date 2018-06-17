@@ -9,16 +9,13 @@ namespace Module02Week01
 {
     public class WriteFile : FileManipulator
     {
-        public override void fileManipulator(List<string> persons)
+        public override void fileManipulator(string person)
         {
-            List<string> names = persons;
+            string name = person;
 
             using (StreamWriter writeFile = new StreamWriter("people.txt"))
             {
-                foreach (string name in names)
-                {
                     writeFile.WriteLine(name);
-                }
             }
         }
     }

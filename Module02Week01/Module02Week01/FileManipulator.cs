@@ -8,6 +8,6 @@ namespace Module02Week01
 {
     public abstract class FileManipulator
     {
-       public abstract void fileManipulator(List<string> persons);
+       public abstract void fileManipulator(string person);
     }
 }

@@ -3,9 +3,30 @@ using System.IO;
 
 namespace Module02Week01
 {
-    public static class ReadFile
+    public class ReadFile
     {
-        public static void ReadFileStream()
+        public delegate void FileReadEventHandler(object sender, EventArgs e);
+        public event FileReadEventHandler FileRead;
+        public delegate void FileDoesNotExistEventHandler(object sender, EventArgs e);
+        public event FileDoesNotExistEventHandler FileDoesNotExist;
+
+        protected virtual void OnFileRead()
+        {
+            if(FileRead != null)
+            {
+                FileRead(this, EventArgs.Empty);
+            }
+        }
+
+        protected virtual void OnFileDoesNotExist()
+        {
+            if(FileDoesNotExist != null)
+            {
+                FileDoesNotExist(this, EventArgs.Empty);
+            }
+        }
+
+        public void ReadFileStream()
         {
             try
             {
@@ -13,6 +34,7 @@ namespace Module02Week01
                 {
                     string line;
                     int counter = 1;
+                    OnFileRead();
                     while ((line = readFile.ReadLine()) != null)
                     {
                         Console.WriteLine(counter + ". " + line);
@@ -22,12 +44,13 @@ namespace Module02Week01
             }
             catch (Exception e)
             {
-                FileManipulator createFile = new WriteFile(List<string>);
-                createFile.fileManipulator.a;
+                FileManipulator createFile = new WriteFile();
+                createFile.fileManipulator("Andrei Kovacs");
                 FileManipulator appendFile = new AppendFile();
-                appendFile.fileManipulator("Madalina Popa", "Doris Ghergana");
-                Console.WriteLine("File could not be located and was therefore created with dummy names!");
-                ReadFile.ReadFileStream();
+                appendFile.fileManipulator("Ionut Unguru");
+                OnFileDoesNotExist();
+                ReadFile readFile = new ReadFile();
+                readFile.ReadFileStream();
             }
         }
     }

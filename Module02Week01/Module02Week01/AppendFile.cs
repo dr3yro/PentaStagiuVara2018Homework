@@ -9,16 +9,14 @@ namespace Module02Week01
 {
     public class AppendFile : FileManipulator
     {
-        public override void fileManipulator(List<string> persons)
+
+        public override void fileManipulator(string person)
         {
-            List<string> names = persons;
+            string name = person;
 
             using (StreamWriter appendFile = File.AppendText("people.txt"))
             {
-                foreach (string name in names)
-                {
                     appendFile.WriteLine(name);
-                }
             }
         }
     }

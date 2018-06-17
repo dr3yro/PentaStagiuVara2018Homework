@@ -10,7 +10,13 @@ namespace Module02Week01
     {
         static void Main(string[] args)
         {
-            ReadFile.ReadFileStream();
+            ConsoleLogger consoleLogger = new ConsoleLogger();
+            ReadFile readFile = new ReadFile();
+
+            readFile.FileRead += consoleLogger.OnFileRead;
+            readFile.FileDoesNotExist += consoleLogger.OnFileDoesNotExist;
+
+            readFile.ReadFileStream();
             Console.ReadLine();
         }
     }
