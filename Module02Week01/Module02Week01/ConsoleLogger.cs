@@ -6,11 +6,6 @@ using System.Threading.Tasks;
 
 namespace Module02Week01
 {
-    class ChoiseEventArgs : EventArgs
-    {
-        public string userChose { get; set; }
-    }
-
     class ConsoleLogger
     {
         public string DisplayOptions()

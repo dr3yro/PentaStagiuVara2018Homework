@@ -17,7 +17,31 @@ namespace Module02Week01
             readFile.FileDoesNotExist += consoleLogger.OnFileDoesNotExist;
 
             readFile.ReadFileStream();
-            Console.ReadLine();
+            
+            while (true)
+            {
+                string userOption = consoleLogger.DisplayOptions();
+
+                switch (userOption)
+                {
+                    case "1":
+                        Console.Write("Please enter the new name: ");
+                        string person = Console.ReadLine();
+                        AppendFile appendNewUser = new AppendFile();
+                        appendNewUser.fileManipulator(person);
+                        readFile.ReadFileStream();
+                        break;
+                    case "2":
+                        Console.WriteLine("Here we will delete a name from the list!");
+                        break;
+                    case "3":
+                        return;
+                    default:
+                        Console.WriteLine("Wrong option! Please pick again:");
+                        consoleLogger.DisplayOptions();
+                        break;
+                }
+            }
         }
     }
 }
